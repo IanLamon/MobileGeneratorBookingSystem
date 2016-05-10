@@ -5,6 +5,9 @@ using System.Net.Http;
 using System.Web.Http;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
+using System.Web.Http.OData.Builder;
+using System.Web.Http.OData.Extensions;
+using SubStationService.Models;
 
 namespace SubStationService
 {
@@ -16,6 +19,11 @@ namespace SubStationService
             // Configure Web API to use only bearer token authentication.
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
+
+            // OData routes
+            ODataConventionModelBuilder builder = new ODataConventionModelBuilder();
+            builder.EntitySet<SubStation>("SubStations1");
+            config.Routes.MapODataServiceRoute("odata", "odata", builder.GetEdmModel());
 
             // Web API routes
             config.MapHttpAttributeRoutes();
