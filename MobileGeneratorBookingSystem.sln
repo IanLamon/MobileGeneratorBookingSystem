@@ -15,13 +15,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishSc
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configurations", "Configurations", "{031D3635-0151-4716-A0F8-09A1C6E59AA4}"
 	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Configurations\BookingService-WAWS-dev.json = PublishScripts\Configurations\BookingService-WAWS-dev.json
 		PublishScripts\Configurations\HumanResourcesService-WAWS-dev.json = PublishScripts\Configurations\HumanResourcesService-WAWS-dev.json
+		PublishScripts\Configurations\MobileGeneratorBooking-WAWS-dev.json = PublishScripts\Configurations\MobileGeneratorBooking-WAWS-dev.json
 		PublishScripts\Configurations\SubStationService-WAWS-dev.json = PublishScripts\Configurations\SubStationService-WAWS-dev.json
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HumanResourcesService", "HumanResourcesService\HumanResourcesService.csproj", "{9D3611C5-4F23-4A9A-B8C5-25CCA7E12B3E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HumanResourcesService.Tests", "HumanResourcesService.Tests\HumanResourcesService.Tests.csproj", "{3B9CDFCE-AAAD-4BF4-A648-F769E5C791E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileGeneratorBooking", "MobileGeneratorBooking\MobileGeneratorBooking.csproj", "{2C67A75A-E965-4017-8482-5591EA3FF2BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileGeneratorBooking.Tests", "MobileGeneratorBooking.Tests\MobileGeneratorBooking.Tests.csproj", "{EC4EBE52-3728-4E78-A9F3-5EBF4635DBA8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookingService", "BookingService\BookingService.csproj", "{C7D61D2A-098D-47B0-8505-B7749BF903A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookingService.Tests", "BookingService.Tests\BookingService.Tests.csproj", "{8876F9A7-BD0D-4F3C-9ABE-60A29A03EBFE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +55,22 @@ Global
 		{3B9CDFCE-AAAD-4BF4-A648-F769E5C791E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B9CDFCE-AAAD-4BF4-A648-F769E5C791E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B9CDFCE-AAAD-4BF4-A648-F769E5C791E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C67A75A-E965-4017-8482-5591EA3FF2BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C67A75A-E965-4017-8482-5591EA3FF2BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C67A75A-E965-4017-8482-5591EA3FF2BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C67A75A-E965-4017-8482-5591EA3FF2BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC4EBE52-3728-4E78-A9F3-5EBF4635DBA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC4EBE52-3728-4E78-A9F3-5EBF4635DBA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC4EBE52-3728-4E78-A9F3-5EBF4635DBA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC4EBE52-3728-4E78-A9F3-5EBF4635DBA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7D61D2A-098D-47B0-8505-B7749BF903A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7D61D2A-098D-47B0-8505-B7749BF903A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7D61D2A-098D-47B0-8505-B7749BF903A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7D61D2A-098D-47B0-8505-B7749BF903A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8876F9A7-BD0D-4F3C-9ABE-60A29A03EBFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8876F9A7-BD0D-4F3C-9ABE-60A29A03EBFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8876F9A7-BD0D-4F3C-9ABE-60A29A03EBFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8876F9A7-BD0D-4F3C-9ABE-60A29A03EBFE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
