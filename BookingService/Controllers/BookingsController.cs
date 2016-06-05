@@ -18,19 +18,102 @@ namespace BookingService.Controllers
         private BookingServiceContext db = new BookingServiceContext();
 
         // GET: api/Bookings
-        public IQueryable<Booking> GetBookings()
+        //public IQueryable<Booking> GetBookings()
+        //{
+        //    return db.Bookings;
+        //}
+
+        public IEnumerable<Booking> GetBookings()
         {
-            return db.Bookings;
+
+            List<Booking> listOfBookings = new List<Booking>();
+            
+            foreach (var b in db.Bookings)
+            {
+                Booking booking = new Booking();
+
+                booking.Id = b.Id;
+                booking.BookingType = b.BookingType;
+                booking.StartTime = b.StartTime;
+                booking.FinishTime = b.FinishTime;
+                booking.WBSNumber = b.WBSNumber;
+                booking.SpecialInstructions = b.SpecialInstructions;
+                booking.BookingStatus = b.BookingStatus;
+                booking.CustomersAffected = b.CustomersAffected;
+                booking.CostPerCustomer = b.CostPerCustomer;
+                booking.CostPerHour = b.CostPerHour;
+                booking.CostOfGeneratorPerDay = b.CostOfGeneratorPerDay;
+                booking.DieselCostPerLitre = b.DieselCostPerLitre;
+                booking.GeneratorDieselLitres = b.GeneratorDieselLitres;
+                booking.TruckDieselLitres = b.TruckDieselLitres;
+
+                //Foreign Keys
+                booking.GeneratorId = b.GeneratorId;
+                booking.SubstationId = b.SubstationId;
+                booking.Operator1Id = b.Operator1Id;
+                booking.Operator2Id = b.Operator2Id;
+                booking.TrafficManagerId = b.TrafficManagerId;
+                booking.ApproverId = b.ApproverId;
+
+                //Navigation Keys
+                booking.Generator = b.Generator;
+                booking.SubStation = b.SubStation;
+                booking.Operator1 = b.Operator1;
+                booking.Operator2 = b.Operator2;
+                booking.TrafficManager = b.TrafficManager;
+                booking.Approver = b.Approver;
+
+                listOfBookings.Add(booking);
+            }
+            IEnumerable<Booking> bookings = listOfBookings;
+
+            return bookings;
+
         }
 
         // GET: api/Bookings/5
         [ResponseType(typeof(Booking))]
         public async Task<IHttpActionResult> GetBooking(int id)
         {
-            Booking booking = await db.Bookings.FindAsync(id);
-            if (booking == null)
+            Booking b = await db.Bookings.FindAsync(id); //entity from database
+            Booking booking = new Booking(); //object to return
+
+            if (b == null)
             {
                 return NotFound();
+            }
+            else
+            {
+                booking.Id = b.Id;
+                booking.BookingType = b.BookingType;
+                booking.StartTime = b.StartTime;
+                booking.FinishTime = b.FinishTime;
+                booking.WBSNumber = b.WBSNumber;
+                booking.SpecialInstructions = b.SpecialInstructions;
+                booking.BookingStatus = b.BookingStatus;
+                booking.CustomersAffected = b.CustomersAffected;
+                booking.CostPerCustomer = b.CostPerCustomer;
+                booking.CostPerHour = b.CostPerHour;
+                booking.CostOfGeneratorPerDay = b.CostOfGeneratorPerDay;
+                booking.DieselCostPerLitre = b.DieselCostPerLitre;
+                booking.GeneratorDieselLitres = b.GeneratorDieselLitres;
+                booking.TruckDieselLitres = b.TruckDieselLitres;
+
+                //Foreign Keys
+                booking.GeneratorId = b.GeneratorId;
+                booking.SubstationId = b.SubstationId;
+                booking.Operator1Id = b.Operator1Id;
+                booking.Operator2Id = b.Operator2Id;
+                booking.TrafficManagerId = b.TrafficManagerId;
+                booking.ApproverId = b.ApproverId;
+
+                //Navigation Keys
+                booking.Generator = b.Generator;
+                booking.SubStation = b.SubStation;
+                booking.Operator1 = b.Operator1;
+                booking.Operator2 = b.Operator2;
+                booking.TrafficManager = b.TrafficManager;
+                booking.Approver = b.Approver;
             }
 
             return Ok(booking);
