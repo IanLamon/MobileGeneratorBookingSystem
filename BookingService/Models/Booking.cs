@@ -33,14 +33,14 @@ namespace BookingService.Models
         public int SubstationId { get; set; }
         public int Operator1Id { get; set; }
         public int Operator2Id { get; set; }
-        public int TrafficManagerId { get; set; }
-        public int ApprovedById { get; set; }
+        public int? TrafficManagerId { get; set; }
+        public int? ApproverId { get; set; }
         //Navigation property
-        public Generator Generator { get; set; }
-        public SubStation SubStation { get; set; }
-        public StaffMember Operator1 { get; set; }
-        public StaffMember Operator2 { get; set; }
-        public StaffMember TrafficManager { get; set; }
-        public StaffMember Approver { get; set; }
+        public virtual Generator Generator { get; set; }
+        public virtual SubStation SubStation { get; set; }
+        public virtual StaffMember Operator1 { get; set; }
+        public virtual StaffMember Operator2 { get; set; }
+        public virtual StaffMember TrafficManager { get; set; }
+        public virtual StaffMember Approver { get; set; }
     }
 }
