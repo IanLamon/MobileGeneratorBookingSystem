@@ -23,11 +23,11 @@ namespace BookingService.Controllers
         //    return db.Bookings;
         //}
 
-        public IEnumerable<Booking> GetBookings()
+        public IQueryable<Booking> GetBookings()
         {
 
             List<Booking> listOfBookings = new List<Booking>();
-            
+
             foreach (var b in db.Bookings)
             {
                 Booking booking = new Booking();
@@ -56,16 +56,16 @@ namespace BookingService.Controllers
                 booking.ApproverId = b.ApproverId;
 
                 //Navigation Keys
-                booking.Generator = b.Generator;
-                booking.SubStation = b.SubStation;
-                booking.Operator1 = b.Operator1;
-                booking.Operator2 = b.Operator2;
-                booking.TrafficManager = b.TrafficManager;
-                booking.Approver = b.Approver;
+                //booking.Generator = b.Generator;
+                //booking.SubStation = b.SubStation;
+                //booking.Operator1 = b.Operator1;
+                //booking.Operator2 = b.Operator2;
+                //booking.TrafficManager = b.TrafficManager;
+                //booking.Approver = b.Approver;
 
                 listOfBookings.Add(booking);
             }
-            IEnumerable<Booking> bookings = listOfBookings;
+            IQueryable<Booking> bookings = listOfBookings.AsQueryable();
 
             return bookings;
 
