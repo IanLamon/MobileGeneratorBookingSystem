@@ -18,110 +18,6 @@ namespace BookingService.Controllers
 {
     public class StaffMembersController : ApiController
     {
-        /*
-        private BookingServiceContext db = new BookingServiceContext();
-        
-        // GET: api/StaffMembers
-        public IQueryable<StaffMember> GetStaffMembers()
-        {
-            return db.StaffMembers;
-        }
-
-        // GET: api/StaffMembers/5
-        [ResponseType(typeof(StaffMember))]
-        public async Task<IHttpActionResult> GetStaffMember(int id)
-        {
-            StaffMember staffMember = await db.StaffMembers.FindAsync(id);
-            if (staffMember == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(staffMember);
-        }
-
-        // PUT: api/StaffMembers/5
-        [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutStaffMember(int id, StaffMember staffMember)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != staffMember.Id)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(staffMember).State = EntityState.Modified;
-
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!StaffMemberExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
-        }
-
-        // POST: api/StaffMembers
-        [ResponseType(typeof(StaffMember))]
-        public async Task<IHttpActionResult> PostStaffMember(StaffMember staffMember)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            db.StaffMembers.Add(staffMember);
-            await db.SaveChangesAsync();
-
-            return CreatedAtRoute("DefaultApi", new { id = staffMember.Id }, staffMember);
-        }
-
-        // DELETE: api/StaffMembers/5
-        [ResponseType(typeof(StaffMember))]
-        public async Task<IHttpActionResult> DeleteStaffMember(int id)
-        {
-            StaffMember staffMember = await db.StaffMembers.FindAsync(id);
-            if (staffMember == null)
-            {
-                return NotFound();
-            }
-
-            db.StaffMembers.Remove(staffMember);
-            await db.SaveChangesAsync();
-
-            return Ok(staffMember);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private bool StaffMemberExists(int id)
-        {
-            return db.StaffMembers.Count(e => e.Id == id) > 0;
-        }
-         */
-
-        //new code to try and consume external Web API
         //The URL of the WEB API Service
         readonly string baseUri = "http://humanresourcesservice.azurewebsites.net/api/StaffMembers/";
 
@@ -140,8 +36,7 @@ namespace BookingService.Controllers
                 response = await httpClient.GetAsync(uri);
                 return response;
             }
-
-        } //ends GetStaffMembers
+        } //ends GetStaffMembers method
 
 
         //**************************************************//
@@ -173,7 +68,7 @@ namespace BookingService.Controllers
             }
 
             return Ok(staffMember);
-        } //ends GetStaffMember
+        } //ends GetStaffMember method
 
 
         //**************************************************//
@@ -203,7 +98,7 @@ namespace BookingService.Controllers
             }
 
             return StatusCode(HttpStatusCode.NoContent);
-        }
+        } //ends Put method
 
 
         //**************************************************//
@@ -234,10 +129,41 @@ namespace BookingService.Controllers
                     return CreatedAtRoute("DefaultApi", new { id = newStaffMember.Id }, newStaffMember);
                 }
             }
-
             return BadRequest(ModelState);
-        }
+        } //ends Post method
 
-        //ends new code
-    }
+
+        //**************************************************//
+        // DELETE: api/StaffMembers/5: To delete a staff member
+        [ResponseType(typeof(StaffMember))]
+        public async Task<IHttpActionResult> DeleteStaffMember(int id)
+        {
+            //variables
+            string uri = baseUri + id; //variabe for the uri for call to external Web API
+            HttpResponseMessage response = new HttpResponseMessage(); //variable for Http response
+            StaffMember staffMember = new StaffMember(); //variable for the staff member to return
+
+            //External Web API call
+            using (HttpClient httpClient = new HttpClient())
+            {
+                //check staff member exists
+                response = await httpClient.GetAsync(uri);
+
+                //if it exists
+                if (response.IsSuccessStatusCode)
+                {
+                    //assign result to staff member object
+                    staffMember = await response.Content.ReadAsAsync<StaffMember>();
+                    //delete staff member
+                    response = await httpClient.DeleteAsync(uri);
+                }
+                //otherwise return not found
+                else
+                {
+                    return NotFound();
+                }
+            }
+            return Ok(staffMember);
+        } //ends Delete method
+    } //ends class
 }
