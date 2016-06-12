@@ -19,7 +19,7 @@ namespace BookingService.Controllers
     public class StaffMembersController : ApiController
     {
         //The URL of the WEB API Service
-        readonly string baseUri = "http://humanresourcesservice.azurewebsites.net/api/StaffMembers/";
+        readonly string baseUri = "http://humanresourcesservice.azurewebsites.net/api/staffmembers/";
 
 
         //**************************************************//

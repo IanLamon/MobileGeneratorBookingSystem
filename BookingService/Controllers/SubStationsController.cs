@@ -15,63 +15,91 @@ namespace BookingService.Controllers
 {
     public class SubStationsController : ApiController
     {
-        private BookingServiceContext db = new BookingServiceContext();
+        //The URL of the WEB API Service
+        readonly string baseUri = "http://substationservice.azurewebsites.net/api/substations/";
 
-        // GET: api/SubStations
-        public IQueryable<SubStation> GetSubStations()
+
+        //**************************************************//
+        // GET: api/SubStations: To get all sub stations
+        public async Task<HttpResponseMessage> GetSubStations()
         {
-            return db.SubStations;
-        }
+            //variabes
+            string uri = baseUri; //variabe for the uri for call to external Web API
+            HttpResponseMessage response = new HttpResponseMessage(); //variable for Http response
 
-        // GET: api/SubStations/5
+            //External Web API call
+            using (HttpClient httpClient = new HttpClient())
+            {
+                response = await httpClient.GetAsync(uri);
+                return response;
+            }
+        } //ends GetSubStations method
+
+
+        //**************************************************//
+        // GET: api/SubStations/5: To get an individual sub station
         [ResponseType(typeof(SubStation))]
         public async Task<IHttpActionResult> GetSubStation(int id)
         {
-            SubStation subStation = await db.SubStations.FindAsync(id);
+            //variables
+            string uri = baseUri + id; //variabe for the uri for call to external Web API
+            HttpResponseMessage response = new HttpResponseMessage(); //variable for Http response
+            SubStation subStation = new SubStation(); //variable for the sub station to return
+
+            //External Web API call
+            using (HttpClient httpClient = new HttpClient())
+            {
+                response = await httpClient.GetAsync(uri);
+            }
+
+            //assign returning data to object
+            if (response.IsSuccessStatusCode)
+            {
+                subStation = await response.Content.ReadAsAsync<SubStation>();
+            }
+
+            //if sub station does not exist return not found
             if (subStation == null)
             {
                 return NotFound();
             }
 
             return Ok(subStation);
-        }
+        } //ends GetSubStation method
 
-        // PUT: api/SubStations/5
+
+        //**************************************************//
+        // PUT: api/SubStations/5: To update an existing sub station
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutSubStation(int id, SubStation subStation)
         {
+            //check Model State is valid
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
+            //check ids match
             if (id != subStation.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(subStation).State = EntityState.Modified;
+            //variabe for the uri for call to external Web API
+            string uri = baseUri + id;
 
-            try
+            //External Web API call
+            using (HttpClient httpClient = new HttpClient())
             {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!SubStationExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                HttpResponseMessage response = await httpClient.PutAsJsonAsync(uri, subStation);
             }
 
             return StatusCode(HttpStatusCode.NoContent);
-        }
+        } //ends Put method
+        
 
-        // POST: api/SubStations
+        //**************************************************//
+        // POST: api/SubStations: To create a new sub station
         [ResponseType(typeof(SubStation))]
         public async Task<IHttpActionResult> PostSubStation(SubStation subStation)
         {
@@ -80,40 +108,60 @@ namespace BookingService.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.SubStations.Add(subStation);
-            await db.SaveChangesAsync();
+            //variabe for the uri for call to external Web API
+            string uri = baseUri;
+            SubStation newSubStation = new SubStation();
 
-            return CreatedAtRoute("DefaultApi", new { id = subStation.Id }, subStation);
-        }
+            //External Web API call
+            using (HttpClient httpClient = new HttpClient())
+            {
+                HttpResponseMessage response = await httpClient.PostAsJsonAsync(uri, subStation);
 
-        // DELETE: api/SubStations/5
+                if (response.IsSuccessStatusCode)
+                {
+                    // Get the URI of the created resource.
+                    newSubStation = await response.Content.ReadAsAsync<SubStation>();
+
+                    //return new staff member
+                    return CreatedAtRoute("DefaultApi", new { id = newSubStation.Id }, newSubStation);
+                }
+            }
+            return BadRequest(ModelState);
+        } //ends Post method
+
+
+        //**************************************************//
+        // DELETE: api/SubStation/5: To delete a sub station
         [ResponseType(typeof(SubStation))]
         public async Task<IHttpActionResult> DeleteSubStation(int id)
         {
-            SubStation subStation = await db.SubStations.FindAsync(id);
-            if (subStation == null)
+            //variables
+            string uri = baseUri + id; //variabe for the uri for call to external Web API
+            HttpResponseMessage response = new HttpResponseMessage(); //variable for Http response
+            SubStation subStation = new SubStation(); //variable for the sub station to return
+
+            //External Web API call
+            using (HttpClient httpClient = new HttpClient())
             {
-                return NotFound();
+                //check sub station exists
+                response = await httpClient.GetAsync(uri);
+
+                //if it exists
+                if (response.IsSuccessStatusCode)
+                {
+                    //assign result to sub station object
+                    subStation = await response.Content.ReadAsAsync<SubStation>();
+                    //delete sub station
+                    response = await httpClient.DeleteAsync(uri);
+                }
+                //otherwise return not found
+                else
+                {
+                    return NotFound();
+                }
             }
-
-            db.SubStations.Remove(subStation);
-            await db.SaveChangesAsync();
-
             return Ok(subStation);
-        }
+        } //ends Delete method
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private bool SubStationExists(int id)
-        {
-            return db.SubStations.Count(e => e.Id == id) > 0;
-        }
-    }
+    } //ends class
 }
