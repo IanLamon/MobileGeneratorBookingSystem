@@ -5,6 +5,9 @@ using System.Net.Http;
 using System.Web.Http;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
+using System.Web.Http.OData.Builder;
+using System.Web.Http.OData.Extensions;
+using BookingService.Models;
 
 namespace BookingService
 {
@@ -16,6 +19,14 @@ namespace BookingService
             // Configure Web API to use only bearer token authentication.
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
+
+            // OData API routes
+            ODataConventionModelBuilder builder = new ODataConventionModelBuilder();
+            builder.EntitySet<Booking>("Bookings1");
+            builder.EntitySet<StaffMember>("StaffMembers1");
+            builder.EntitySet<Generator>("Generators1");
+            builder.EntitySet<SubStation>("SubStations1");
+            config.Routes.MapODataServiceRoute("odata", "odata", builder.GetEdmModel());
 
             // Web API routes
             config.MapHttpAttributeRoutes();
