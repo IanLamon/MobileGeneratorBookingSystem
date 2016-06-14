@@ -26,6 +26,7 @@ namespace BookingService
             builder.EntitySet<StaffMember>("StaffMembers1");
             builder.EntitySet<Generator>("Generators1");
             builder.EntitySet<SubStation>("SubStations1");
+            builder.EntitySet<Costs>("Costs1");
             config.Routes.MapODataServiceRoute("odata", "odata", builder.GetEdmModel());
 
             // Web API routes
