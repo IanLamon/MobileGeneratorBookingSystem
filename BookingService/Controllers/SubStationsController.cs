@@ -59,7 +59,7 @@ namespace BookingService.Controllers
             }
 
             //if sub station does not exist return not found
-            if (subStation == null)
+            if (subStation.Id == 0)
             {
                 return NotFound();
             }

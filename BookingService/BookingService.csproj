@@ -238,6 +238,7 @@
     <Compile Include="Controllers\Generators1Controller.cs" />
     <Compile Include="Controllers\GeneratorsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\StaffMembers1Controller.cs" />
     <Compile Include="Controllers\StaffMembersController.cs" />
     <Compile Include="Controllers\SubStations1Controller.cs" />
     <Compile Include="Controllers\SubStationsController.cs" />
