@@ -11,16 +11,16 @@ using System.Web.Mvc;
 
 namespace MobileGeneratorBooking.Controllers
 {
-    public class SubStationController : Controller
+    public class BookingController : Controller
     {
         HttpClient client;
         //The URL of the WEB API Service
-        string url = "http://bookingservice.azurewebsites.net/api/substations";
+        string url = "http://bookingservice.azurewebsites.net/api/bookings";
         
         //The HttpClient Class, this will be used for performing 
         //HTTP Operations, GET, POST, PUT, DELETE
         //Set the base address and the Header Formatter
-        public SubStationController()
+        public BookingController()
         {
             client = new HttpClient();  
             client.BaseAddress = new Uri(url);
@@ -30,7 +30,7 @@ namespace MobileGeneratorBooking.Controllers
 
 
         //*********************************************************************//
-        // GET All: SubStation
+        // GET All: Booking
         public async Task<ActionResult> Index()
         {
             HttpResponseMessage responseMessage = await client.GetAsync(url);
@@ -38,16 +38,16 @@ namespace MobileGeneratorBooking.Controllers
             {
                 var responseData = responseMessage.Content.ReadAsStringAsync().Result;
 
-                var SubStations = JsonConvert.DeserializeObject<List<SubStation>>(responseData);
+                var Bookings = JsonConvert.DeserializeObject<List<Booking>>(responseData);
 
-                return View(SubStations);
+                return View(Bookings);
             }
             return View("Error");
         }
 
 
         //*********************************************************************//
-        // Get One: SubStation
+        // Get One: Booking
         public async Task<ActionResult> Details(int id)
         {
             HttpResponseMessage responseMessage = await client.GetAsync(url + "/" + id);
@@ -55,16 +55,16 @@ namespace MobileGeneratorBooking.Controllers
             {
                 var responseData = responseMessage.Content.ReadAsStringAsync().Result;
 
-                var subStation = JsonConvert.DeserializeObject<SubStation>(responseData);
+                var booking = JsonConvert.DeserializeObject<Booking>(responseData);
 
-                return View(subStation);
+                return View(booking);
             }
             return View("Error");
         }
 
 
         //*********************************************************************//
-        //Edit: SubStation
+        //Edit: Booking
         public async Task<ActionResult> Edit(int id)
         {
             HttpResponseMessage responseMessage = await client.GetAsync(url + "/" + id);
@@ -72,18 +72,18 @@ namespace MobileGeneratorBooking.Controllers
             {
                 var responseData = responseMessage.Content.ReadAsStringAsync().Result;
 
-                var subStation = JsonConvert.DeserializeObject<SubStation>(responseData);
+                var booking = JsonConvert.DeserializeObject<Booking>(responseData);
 
-                return View(subStation);
+                return View(booking);
             }
             return View("Error");
         }
 
         //The PUT Method
         [HttpPost]
-        public async Task<ActionResult> Edit(int id, SubStation subStation)
+        public async Task<ActionResult> Edit(int id, Booking booking)
         {
-            HttpResponseMessage responseMessage = await client.PutAsJsonAsync(url + "/" + id, subStation);
+            HttpResponseMessage responseMessage = await client.PutAsJsonAsync(url + "/" + id, booking);
             if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index");
@@ -93,17 +93,17 @@ namespace MobileGeneratorBooking.Controllers
 
 
         //*********************************************************************//
-        //Create: SubStation
+        //Create: Booking
         public ActionResult Create()
         {
-            return View(new SubStation());
+            return View(new Booking());
         }
 
         //The Post method
         [HttpPost]
-        public async Task<ActionResult> Create(SubStation subStation)
+        public async Task<ActionResult> Create(Booking booking)
         {
-            HttpResponseMessage responseMessage = await client.PostAsJsonAsync(url, subStation);
+            HttpResponseMessage responseMessage = await client.PostAsJsonAsync(url, booking);
             if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index");
@@ -113,7 +113,7 @@ namespace MobileGeneratorBooking.Controllers
 
 
         //*********************************************************************//
-        //Delete: SubStation
+        //Delete: Booking
         public async Task<ActionResult> Delete(int id)
         {
             HttpResponseMessage responseMessage = await client.GetAsync(url + "/" + id);
@@ -121,16 +121,16 @@ namespace MobileGeneratorBooking.Controllers
             {
                 var responseData = responseMessage.Content.ReadAsStringAsync().Result;
 
-                var subStation = JsonConvert.DeserializeObject<SubStation>(responseData);
+                var booking = JsonConvert.DeserializeObject<Booking>(responseData);
 
-                return View(subStation);
+                return View(booking);
             }
             return View("Error");
         }
 
         //The DELETE method
         [HttpPost]
-        public async Task<ActionResult> Delete(int id, SubStation subStation)
+        public async Task<ActionResult> Delete(int id, Booking booking)
         {
             HttpResponseMessage responseMessage = await client.DeleteAsync(url + "/" + id);
             if (responseMessage.IsSuccessStatusCode)

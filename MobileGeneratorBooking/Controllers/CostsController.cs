@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
-namespace MobileCostsBooking.Controllers
+namespace MobileGeneratorBooking.Controllers
 {
     public class CostsController : Controller
     {
