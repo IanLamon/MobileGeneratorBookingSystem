@@ -9,18 +9,18 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
-namespace MobileGeneratorBooking.Controllers
+namespace MobileCostsBooking.Controllers
 {
-    public class GeneratorController : Controller
+    public class CostsController : Controller
     {
         HttpClient client;
         //The URL of the WEB API Service
-        string url = "http://bookingservice.azurewebsites.net/api/generators";
+        string url = "http://bookingservice.azurewebsites.net/api/costs";
         
         //The HttpClient Class, this will be used for performing 
         //HTTP Operations, GET, POST, PUT, DELETE
         //Set the base address and the Header Formatter
-        public GeneratorController()
+        public CostsController()
         {
             client = new HttpClient();  
             client.BaseAddress = new Uri(url);
@@ -30,7 +30,7 @@ namespace MobileGeneratorBooking.Controllers
 
 
         //*********************************************************************//
-        // GET All: Generator
+        // GET All: Costs
         public async Task<ActionResult> Index()
         {
             HttpResponseMessage responseMessage = await client.GetAsync(url);
@@ -38,16 +38,16 @@ namespace MobileGeneratorBooking.Controllers
             {
                 var responseData = responseMessage.Content.ReadAsStringAsync().Result;
 
-                var Generators = JsonConvert.DeserializeObject<List<Generator>>(responseData);
+                var Costss = JsonConvert.DeserializeObject<List<Costs>>(responseData);
 
-                return View(Generators);
+                return View(Costss);
             }
             return View("Error");
         }
 
 
         //*********************************************************************//
-        // Get One: Generator
+        // Get One: Costs
         public async Task<ActionResult> Details(int id)
         {
             HttpResponseMessage responseMessage = await client.GetAsync(url + "/" + id);
@@ -55,16 +55,16 @@ namespace MobileGeneratorBooking.Controllers
             {
                 var responseData = responseMessage.Content.ReadAsStringAsync().Result;
 
-                var generator = JsonConvert.DeserializeObject<Generator>(responseData);
+                var costs = JsonConvert.DeserializeObject<Costs>(responseData);
 
-                return View(generator);
+                return View(costs);
             }
             return View("Error");
         }
 
 
         //*********************************************************************//
-        //Edit: Generator
+        //Edit: Costs
         public async Task<ActionResult> Edit(int id)
         {
             HttpResponseMessage responseMessage = await client.GetAsync(url + "/" + id);
@@ -72,18 +72,18 @@ namespace MobileGeneratorBooking.Controllers
             {
                 var responseData = responseMessage.Content.ReadAsStringAsync().Result;
 
-                var generator = JsonConvert.DeserializeObject<Generator>(responseData);
+                var costs = JsonConvert.DeserializeObject<Costs>(responseData);
 
-                return View(generator);
+                return View(costs);
             }
             return View("Error");
         }
 
         //The PUT Method
         [HttpPost]
-        public async Task<ActionResult> Edit(int id, Generator generator)
+        public async Task<ActionResult> Edit(int id, Costs costs)
         {
-            HttpResponseMessage responseMessage = await client.PutAsJsonAsync(url + "/" + id, generator);
+            HttpResponseMessage responseMessage = await client.PutAsJsonAsync(url + "/" + id, costs);
             if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index");
@@ -93,17 +93,17 @@ namespace MobileGeneratorBooking.Controllers
 
 
         //*********************************************************************//
-        //Create: Generator
+        //Create: Costs
         public ActionResult Create()
         {
-            return View(new Generator());
+            return View(new Costs());
         }
 
         //The Post method
         [HttpPost]
-        public async Task<ActionResult> Create(Generator generator)
+        public async Task<ActionResult> Create(Costs costs)
         {
-            HttpResponseMessage responseMessage = await client.PostAsJsonAsync(url, generator);
+            HttpResponseMessage responseMessage = await client.PostAsJsonAsync(url, costs);
             if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index");
@@ -113,7 +113,7 @@ namespace MobileGeneratorBooking.Controllers
 
 
         //*********************************************************************//
-        //Delete: Generator
+        //Delete: Costs
         public async Task<ActionResult> Delete(int id)
         {
             HttpResponseMessage responseMessage = await client.GetAsync(url + "/" + id);
@@ -121,16 +121,16 @@ namespace MobileGeneratorBooking.Controllers
             {
                 var responseData = responseMessage.Content.ReadAsStringAsync().Result;
 
-                var generator = JsonConvert.DeserializeObject<Generator>(responseData);
+                var costs = JsonConvert.DeserializeObject<Costs>(responseData);
 
-                return View(generator);
+                return View(costs);
             }
             return View("Error");
         }
 
         //The DELETE method
         [HttpPost]
-        public async Task<ActionResult> Delete(int id, Generator generator)
+        public async Task<ActionResult> Delete(int id, Costs costs)
         {
             HttpResponseMessage responseMessage = await client.DeleteAsync(url + "/" + id);
             if (responseMessage.IsSuccessStatusCode)

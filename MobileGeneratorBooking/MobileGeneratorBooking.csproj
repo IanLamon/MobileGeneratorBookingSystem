@@ -191,6 +191,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CostsController.cs" />
     <Compile Include="Controllers\GeneratorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -198,6 +199,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Costs.cs" />
     <Compile Include="Models\Generator.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -271,6 +273,11 @@
     <Content Include="Views\Generator\Edit.cshtml" />
     <Content Include="Views\Generator\Create.cshtml" />
     <Content Include="Views\Generator\Delete.cshtml" />
+    <Content Include="Views\Costs\Index.cshtml" />
+    <Content Include="Views\Costs\Details.cshtml" />
+    <Content Include="Views\Costs\Edit.cshtml" />
+    <Content Include="Views\Costs\Create.cshtml" />
+    <Content Include="Views\Costs\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

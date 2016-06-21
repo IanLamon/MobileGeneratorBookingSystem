@@ -1,0 +1,42 @@
+﻿@model MobileGeneratorBooking.Models.Costs
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Costs</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DieselCostPerLitre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DieselCostPerLitre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CostPerCustomer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CostPerCustomer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CostPerHour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CostPerHour)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
