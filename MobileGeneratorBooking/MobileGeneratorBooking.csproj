@@ -195,6 +195,7 @@
     <Compile Include="Controllers\GeneratorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\StaffMemberController.cs" />
     <Compile Include="Controllers\SubStationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -204,6 +205,7 @@
     <Compile Include="Models\Generator.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\StaffMember.cs" />
     <Compile Include="Models\SubStation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -285,6 +287,11 @@
     <Content Include="Views\SubStation\Edit.cshtml" />
     <Content Include="Views\SubStation\Create.cshtml" />
     <Content Include="Views\SubStation\Delete.cshtml" />
+    <Content Include="Views\StaffMember\Index.cshtml" />
+    <Content Include="Views\StaffMember\Details.cshtml" />
+    <Content Include="Views\StaffMember\Edit.cshtml" />
+    <Content Include="Views\StaffMember\Create.cshtml" />
+    <Content Include="Views\StaffMember\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
