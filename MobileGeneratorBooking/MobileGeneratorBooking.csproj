@@ -193,6 +193,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BookingController.cs" />
     <Compile Include="Controllers\CostsController.cs" />
+    <Compile Include="Controllers\Generator1Controller.cs" />
     <Compile Include="Controllers\GeneratorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -299,6 +300,7 @@
     <Content Include="Views\Booking\Edit.cshtml" />
     <Content Include="Views\Booking\Create.cshtml" />
     <Content Include="Views\Booking\Delete.cshtml" />
+    <Content Include="Views\Generator1\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
