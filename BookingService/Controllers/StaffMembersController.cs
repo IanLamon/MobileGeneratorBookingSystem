@@ -21,13 +21,29 @@ namespace BookingService.Controllers
         //The URL of the WEB API Service
         readonly string baseUri = "http://humanresourcesservice.azurewebsites.net/api/staffmembers/";
 
-
         //**************************************************//
         // GET: api/StaffMembers: To get all staff members
         public async Task<HttpResponseMessage> GetStaffMembers()
         {
             //variabes
             string uri = baseUri; //variabe for the uri for call to external Web API
+            HttpResponseMessage response = new HttpResponseMessage(); //variable for Http response
+
+            //External Web API call
+            using (HttpClient httpClient = new HttpClient())
+            {
+                response = await httpClient.GetAsync(uri);
+                return response;
+            }
+        } //ends GetStaffMembers method
+
+
+        //**************************************************//
+        // GET: api/StaffMembers: To get all staff members that are operators
+        public async Task<HttpResponseMessage> GetStaffMembers(bool isOperator)
+        {
+            //variabes
+            string uri = baseUri + "?isOperator=" + isOperator; //variabe for the uri for call to external Web API
             HttpResponseMessage response = new HttpResponseMessage(); //variable for Http response
 
             //External Web API call

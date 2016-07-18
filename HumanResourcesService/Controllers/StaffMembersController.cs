@@ -23,6 +23,12 @@ namespace HumanResourcesService.Controllers
             return db.StaffMembers;
         }
 
+        // GET: api/StaffMembers that are operators
+        public IQueryable<StaffMember> GetStaffMembers(bool isOperator)
+        {
+            return db.StaffMembers.Where(i => i.Operator == isOperator);
+        }
+
         // GET: api/StaffMembers/5
         [ResponseType(typeof(StaffMember))]
         public async Task<IHttpActionResult> GetStaffMember(int id)

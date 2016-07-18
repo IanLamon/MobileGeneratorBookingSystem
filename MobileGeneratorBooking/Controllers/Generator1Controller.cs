@@ -69,32 +69,32 @@ namespace MobileGeneratorBooking.Controllers
 
 
         //*********************************************************************//
-        //Edit: Generator
-        public async Task<ActionResult> Edit(int id)
-        {
-            HttpResponseMessage responseMessage = await client.GetAsync(url + "(" + id + ")");
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                var responseData = responseMessage.Content.ReadAsStringAsync().Result;
+        ////Edit: Generator
+        //public async Task<ActionResult> Edit(int id)
+        //{
+        //    HttpResponseMessage responseMessage = await client.GetAsync(url + "(" + id + ")");
+        //    if (responseMessage.IsSuccessStatusCode)
+        //    {
+        //        var responseData = responseMessage.Content.ReadAsStringAsync().Result;
 
-                var generator = JsonConvert.DeserializeObject<Generator>(responseData);
+        //        var generator = JsonConvert.DeserializeObject<Generator>(responseData);
 
-                return View(generator);
-            }
-            return View("Error");
-        }
+        //        return View(generator);
+        //    }
+        //    return View("Error");
+        //}
 
-        //The PUT Method
-        [HttpPost]
-        public async Task<ActionResult> Edit(int id, Generator generator)
-        {
-            HttpResponseMessage responseMessage = await client.PutAsJsonAsync(url + "(" + id + ")", generator);
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                return RedirectToAction("~/Views/Generator/Index.cshtml");
-            }
-            return RedirectToAction("Error");
-        }
+        ////The PUT Method
+        //[HttpPost]
+        //public async Task<ActionResult> Edit(int id, Generator generator)
+        //{
+        //    HttpResponseMessage responseMessage = await client.PutAsJsonAsync(url + "(" + id + ")", generator);
+        //    if (responseMessage.IsSuccessStatusCode)
+        //    {
+        //        return RedirectToAction("~/Views/Generator/Index.cshtml");
+        //    }
+        //    return RedirectToAction("Error");
+        //}
 
 
         //*********************************************************************//
