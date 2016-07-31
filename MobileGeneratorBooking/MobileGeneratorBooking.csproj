@@ -216,6 +216,10 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\ESBLogo.png" />
+    <Content Include="Content\Images\LoginImage1.jpg" />
+    <Content Include="Content\Images\LoginImage2.jpg" />
+    <Content Include="Content\Images\LoginImage3.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -302,6 +306,7 @@
     <Content Include="Views\Booking\Delete.cshtml" />
     <Content Include="Views\Generator1\Edit.cshtml" />
     <Content Include="Views\Booking\Calendar.cshtml" />
+    <Content Include="Views\Booking\PastBookings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

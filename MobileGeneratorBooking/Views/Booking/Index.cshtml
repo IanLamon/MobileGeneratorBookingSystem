@@ -1,14 +1,17 @@
 ﻿@model IEnumerable<MobileGeneratorBooking.Models.Booking>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Upcoming Generator Bookings";
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<br />
+<div class="row">
+    <div class="col-md-6">@Html.ActionLink("Create A New Booking >>", "Create", null, new { @class = "btn btn-success" })</div>
+    <div class="col-md-6 text-right">@Html.ActionLink("View Past Bookings", "PastBookings", null, new{ @class = "btn btn-primary" })</div>
+</div>
+<br />
 <table class="table">
     <tr>
         <th>

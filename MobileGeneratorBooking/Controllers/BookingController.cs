@@ -30,7 +30,7 @@ namespace MobileGeneratorBooking.Controllers
 
 
         //*********************************************************************//
-        // GET All: Booking
+        // GET All: Future Bookings
         public async Task<ActionResult> Index()
         {
             HttpResponseMessage responseMessage = await client.GetAsync(url);
@@ -38,9 +38,48 @@ namespace MobileGeneratorBooking.Controllers
             {
                 var responseData = responseMessage.Content.ReadAsStringAsync().Result;
 
-                var Bookings = JsonConvert.DeserializeObject<List<Booking>>(responseData);
+                var Bookings = JsonConvert.DeserializeObject<List<Booking>>(responseData).OrderBy(x => x.StartTime);
 
-                return View(Bookings);
+                var today = DateTime.Today;
+                List<Booking> futureBookings = new List<Booking>();
+
+                foreach (var b in Bookings)
+                {
+                    if (b.StartTime >= today)
+                    {
+                        futureBookings.Add(b);
+                    }
+                }
+
+                return View(futureBookings);
+            }
+            return View("Error");
+        }
+
+
+        //*********************************************************************//
+        // GET All: Past Bookings
+        public async Task<ActionResult> PastBookings()
+        {
+            HttpResponseMessage responseMessage = await client.GetAsync(url);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var responseData = responseMessage.Content.ReadAsStringAsync().Result;
+
+                var Bookings = JsonConvert.DeserializeObject<List<Booking>>(responseData).OrderByDescending(x => x.StartTime);
+
+                var today = DateTime.Today;
+                List<Booking> pastBookings = new List<Booking>();
+
+                foreach (var b in Bookings)
+                {
+                    if (b.StartTime < today)
+                    {
+                        pastBookings.Add(b);
+                    }
+                }
+
+                return View(pastBookings);
             }
             return View("Error");
         }

@@ -1,6 +1,7 @@
 ﻿body {
-    padding-top: 50px;
+    padding-top: 78px;
     padding-bottom: 20px;
+    color: #63666A;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -22,3 +23,89 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/*Remove radius corners from buttons*/
+.btn{
+    border-radius: 0;
+}
+
+/*Nav Bar*/
+.navbar {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    /*background-color: #003c71;*/
+    border-color: transparent;
+    color: #fff;
+    background: linear-gradient(to right, #111c2d 0%,#009fdf 100%);
+    background-image: linear-gradient(to right, rgb(17, 28, 45) 0%, rgb(0, 159, 223) 100%);
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-repeat-x: initial;
+    background-repeat-y: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial;
+    /* IE 6 y 7 */
+    zoom: 1;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#111c2d', endColorstr='#009fdf', GradientType='1');
+    /* IE 8 y 9 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#111c2d', endColorstr='#009fdf', gradientType='1')";
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #fff;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover {
+    color: #009FDF;
+}
+
+.navbar-inverse .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+    color: #fff;
+    background-color: #0076b7;
+}
+
+.navbar-header {
+    margin-right: 50px !important;
+}
+
+/*Collapse navigation earlier than standard Bootstrap*/
+@media (max-width: 991px) {
+  .navbar-header {
+      float: none;
+  }
+  .navbar-left,.navbar-right {
+      float: none !important;
+  }
+  .navbar-toggle {
+      display: block;
+  }
+  .navbar-collapse {
+      border-top: 1px solid transparent;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+  }
+  .navbar-fixed-top {
+      top: 0;
+      border-width: 0 0 1px;
+  }
+  .navbar-collapse.collapse {
+      display: none!important;
+  }
+  .navbar-nav {
+      float: none!important;
+      margin-top: 7.5px;
+  }
+  .navbar-nav>li {
+      float: none;
+  }
+  .navbar-nav>li>a {
+      padding-top: 10px;
+      padding-bottom: 10px;
+  }
+  .collapse.in{
+      display:block !important;
+  }
+}
+/*Ends Collapse navigation earlier than standard Bootstrap*/
