@@ -93,7 +93,7 @@ namespace HumanResourcesService.Controllers
         }
 
         // DELETE: api/StaffMembers/5
-        [ResponseType(typeof(StaffMember))]
+        [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> DeleteStaffMember(int id)
         {
             StaffMember staffMember = await db.StaffMembers.FindAsync(id);
@@ -105,7 +105,7 @@ namespace HumanResourcesService.Controllers
             db.StaffMembers.Remove(staffMember);
             await db.SaveChangesAsync();
 
-            return Ok(staffMember);
+            return StatusCode(HttpStatusCode.NoContent);
         }
 
         protected override void Dispose(bool disposing)

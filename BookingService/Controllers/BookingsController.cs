@@ -217,7 +217,7 @@ namespace BookingService.Controllers
         }
 
         // DELETE: api/Bookings/5
-        [ResponseType(typeof(Booking))]
+        [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> DeleteBooking(int id)
         {
             Booking booking = await db.Bookings.FindAsync(id);
@@ -229,7 +229,7 @@ namespace BookingService.Controllers
             db.Bookings.Remove(booking);
             await db.SaveChangesAsync();
 
-            return Ok(booking);
+            return StatusCode(HttpStatusCode.NoContent);
         }
 
         protected override void Dispose(bool disposing)

@@ -151,13 +151,12 @@ namespace BookingService.Controllers
 
         //**************************************************//
         // DELETE: api/StaffMembers/5: To delete a staff member
-        [ResponseType(typeof(StaffMember))]
+        [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> DeleteStaffMember(int id)
         {
             //variables
             string uri = baseUri + id; //variabe for the uri for call to external Web API
             HttpResponseMessage response = new HttpResponseMessage(); //variable for Http response
-            StaffMember staffMember = new StaffMember(); //variable for the staff member to return
 
             //External Web API call
             using (HttpClient httpClient = new HttpClient())
@@ -168,8 +167,6 @@ namespace BookingService.Controllers
                 //if it exists
                 if (response.IsSuccessStatusCode)
                 {
-                    //assign result to staff member object
-                    staffMember = await response.Content.ReadAsAsync<StaffMember>();
                     //delete staff member
                     response = await httpClient.DeleteAsync(uri);
                 }
@@ -179,7 +176,7 @@ namespace BookingService.Controllers
                     return NotFound();
                 }
             }
-            return Ok(staffMember);
+            return StatusCode(HttpStatusCode.NoContent);
         } //ends Delete method
     } //ends class
 }

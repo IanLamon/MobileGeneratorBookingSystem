@@ -13,6 +13,7 @@ using System.Web.Http.OData;
 using System.Web.Http.OData.Routing;
 using BookingService.Models;
 using System.Web.Http.Description;
+using System.Web;
 
 namespace BookingService.Controllers
 {
@@ -29,7 +30,16 @@ namespace BookingService.Controllers
             //variabes
             string uri = baseUri; //variabe for the uri for call to external Web API
             HttpResponseMessage response = new HttpResponseMessage(); //variable for Http response
-
+            
+            //get query options 
+            string path = HttpContext.Current.Request.Url.ToString();
+            int question = path.IndexOf("?");
+            if (question > -1)
+            {
+                string query = path.Substring(question);
+                uri += query;
+            }
+            
             //External Web API call
             using (HttpClient httpClient = new HttpClient())
             {
