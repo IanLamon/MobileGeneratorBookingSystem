@@ -1,0 +1,90 @@
+﻿@model BookingApplication.Models.Generator
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div>
+    <h4>Generator</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CostPerDay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CostPerDay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GeneratorLitresPerHour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GeneratorLitresPerHour)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TruckDieselLitresPerKm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TruckDieselLitresPerKm)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaxAMP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaxAMP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaxKw)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaxKw)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastVehicleService)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastVehicleService)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastGeneratorMaintenance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastGeneratorMaintenance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastMinorInspection)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastMinorInspection)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

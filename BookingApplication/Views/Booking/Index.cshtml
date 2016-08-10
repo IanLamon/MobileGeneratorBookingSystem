@@ -1,0 +1,67 @@
+﻿@model IEnumerable<BookingApplication.Models.Booking>
+
+@{
+    ViewBag.Title = "Upcoming Generator Bookings";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<br />
+<div class="row">
+    <div class="col-md-6">@Html.ActionLink("Create A New Booking >>", "Create", null, new { @class = "btn btn-success" })</div>
+    <div class="col-md-6 text-right">@Html.ActionLink("View Past Bookings", "PastBookings", null, new { @class = "btn btn-primary" })</div>
+</div>
+<br />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StartTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SubstationId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GeneratorId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BookingType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BookingStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApproverId)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubstationId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GeneratorId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookingType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookingStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApproverId)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

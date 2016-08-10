@@ -1,0 +1,352 @@
+﻿@model BookingApplication.Models.Booking
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Booking</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BookingType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BookingType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FinishTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FinishTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WBSNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WBSNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SpecialInstructions)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SpecialInstructions)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BookingStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BookingStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomersAffected)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomersAffected)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CostPerCustomer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CostPerCustomer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CostPerHour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CostPerHour)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CostOfGeneratorPerDay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CostOfGeneratorPerDay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DieselCostPerLitre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DieselCostPerLitre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GeneratorDieselLitres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GeneratorDieselLitres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TruckDieselLitres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TruckDieselLitres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GeneratorId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GeneratorId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SubstationId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubstationId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Operator1Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Operator1Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Operator2Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Operator2Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrafficManagerId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrafficManagerId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApproverId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApproverId)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
+
+@*@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Booking</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Approver.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Approver.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Generator.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Generator.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Operator1.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Operator1.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Operator2.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Operator2.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SubStation.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubStation.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrafficManager.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrafficManager.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BookingType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BookingType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FinishTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FinishTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WBSNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WBSNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SpecialInstructions)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SpecialInstructions)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BookingStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BookingStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomersAffected)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomersAffected)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CostPerCustomer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CostPerCustomer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CostPerHour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CostPerHour)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CostOfGeneratorPerDay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CostOfGeneratorPerDay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DieselCostPerLitre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DieselCostPerLitre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GeneratorDieselLitres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GeneratorDieselLitres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TruckDieselLitres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TruckDieselLitres)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>*@
