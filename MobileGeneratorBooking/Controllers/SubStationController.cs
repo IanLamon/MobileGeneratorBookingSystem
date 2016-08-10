@@ -11,6 +11,7 @@ using System.Web.Mvc;
 
 namespace MobileGeneratorBooking.Controllers
 {
+    [Authorize]
     public class SubStationController : Controller
     {
         HttpClient client;
