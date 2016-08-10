@@ -4,166 +4,416 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Booking Details</h2>
 
-<div>
-    <h4>Booking</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.BookingType)
-        </dt>
+<div class="row">
+    <div class="col-md-4">
+        <h4>Booking</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.BookingType)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.BookingType)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.BookingType)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.StartTime)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.StartTime)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.StartTime)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.StartTime)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FinishTime)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.FinishTime)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.FinishTime)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.FinishTime)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.WBSNumber)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.WBSNumber)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.WBSNumber)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.WBSNumber)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.SpecialInstructions)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.SpecialInstructions)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.SpecialInstructions)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.SpecialInstructions)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.BookingStatus)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.BookingStatus)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.BookingStatus)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.BookingStatus)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CustomersAffected)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.CostPerCustomer)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CustomersAffected)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.CostPerCustomer)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CostPerCustomer)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.CostPerHour)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CostPerCustomer)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.CostPerHour)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CostPerHour)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.DieselCostPerLitre)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CostPerHour)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.DieselCostPerLitre)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CostOfGeneratorPerDay)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.GeneratorDieselLitres)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CostOfGeneratorPerDay)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.GeneratorDieselLitres)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DieselCostPerLitre)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.TruckDieselLitres)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DieselCostPerLitre)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.TruckDieselLitres)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.GeneratorDieselLitres)
-        </dt>
+            <dt>
+                Approval By
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.GeneratorDieselLitres)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Approver.FirstName) @Html.DisplayFor(model => model.Approver.Surname)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TruckDieselLitres)
-        </dt>
+        </dl>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.TruckDieselLitres)
-        </dd>
+    <div class="col-md-4">
+        <h4>Generator</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Generator.Name)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.GeneratorId)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Generator.Name)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.GeneratorId)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Generator.CostPerDay)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.SubstationId)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Generator.CostPerDay)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.SubstationId)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Generator.GeneratorLitresPerHour)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Operator1Id)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Generator.GeneratorLitresPerHour)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Operator1Id)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Generator.TruckDieselLitresPerKm)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Operator2Id)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Generator.TruckDieselLitresPerKm)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Operator2Id)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Generator.MaxAMP)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TrafficManagerId)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Generator.MaxAMP)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.TrafficManagerId)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Generator.MaxKw)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ApproverId)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Generator.MaxKw)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ApproverId)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Generator.LastVehicleService)
+            </dt>
 
-    </dl>
+            <dd>
+                @Html.DisplayFor(model => model.Generator.LastVehicleService)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Generator.LastGeneratorMaintenance)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Generator.LastGeneratorMaintenance)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Generator.LastMinorInspection)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Generator.LastMinorInspection)
+            </dd>
+
+        </dl>
+    </div>
+
+    <div class="col-md-4">
+        <h4>Sub Station</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.SubStation.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SubStation.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SubStation.Address)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SubStation.Address)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SubStation.Longitude)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SubStation.Longitude)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SubStation.Latitude)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SubStation.Latitude)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SubStation.PeakLoadAmp)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SubStation.PeakLoadAmp)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SubStation.PeakLoadKw)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SubStation.PeakLoadKw)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SubStation.NoOfCustomers)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SubStation.NoOfCustomers)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SubStation.TrafficManagement)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SubStation.TrafficManagement)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SubStation.ContactFirstName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SubStation.ContactFirstName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SubStation.ContactSurame)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SubStation.ContactSurame)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SubStation.ContactTelephone)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SubStation.ContactTelephone)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SubStation.ContactEmail)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SubStation.ContactEmail)
+            </dd>
+
+        </dl>
+    </div>
+    
 </div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h4>Operator 1</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Operator1.FirstName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Operator1.FirstName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Operator1.Surname)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Operator1.Surname)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Operator1.Telephone)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Operator1.Telephone)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Operator1.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Operator1.Email)
+            </dd>
+
+        </dl>
+    </div>
+
+    <div class="col-md-4">
+        <h4>Operator 2</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Operator2.FirstName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Operator2.FirstName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Operator2.Surname)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Operator2.Surname)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Operator2.Telephone)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Operator2.Telephone)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Operator2.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Operator2.Email)
+            </dd>
+
+        </dl>
+    </div>
+
+    <div class="col-md-4">
+        <h4>Traffic Manager</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.TrafficManager.FirstName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TrafficManager.FirstName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TrafficManager.Surname)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TrafficManager.Surname)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TrafficManager.Telephone)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TrafficManager.Telephone)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TrafficManager.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TrafficManager.Email)
+            </dd>
+
+        </dl>
+    </div>
+
+</div>
+
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")

@@ -47,6 +47,59 @@ namespace MobileGeneratorBooking.Controllers
 
 
         //*********************************************************************//
+        // GET All: Operators
+        public async Task<ActionResult> Operators()
+        {
+            HttpResponseMessage responseMessage = await client.GetAsync(url);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var responseData = responseMessage.Content.ReadAsStringAsync().Result;
+
+                var StaffMembers = JsonConvert.DeserializeObject<List<StaffMember>>(responseData);
+                List<StaffMember> operators = new List<StaffMember>();
+
+                foreach (var s in StaffMembers)
+                {
+                    if (s.Operator == true)
+                    {
+                        operators.Add(s);
+                    }
+                }
+
+                return View(operators);
+            }
+            return View("Error");
+        }
+
+
+        //*********************************************************************//
+        // GET All: Traffic Managers
+        public async Task<ActionResult> TrafficManagers()
+        {
+            HttpResponseMessage responseMessage = await client.GetAsync(url);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var responseData = responseMessage.Content.ReadAsStringAsync().Result;
+
+                var StaffMembers = JsonConvert.DeserializeObject<List<StaffMember>>(responseData);
+                List<StaffMember> trafficManagers = new List<StaffMember>();
+
+                foreach (var s in StaffMembers)
+                {
+                    if (s.Traffic == true)
+                    {
+                        trafficManagers.Add(s);
+                    }
+                }
+
+                return View(trafficManagers);
+            }
+            return View("Error");
+        }
+
+
+
+        //*********************************************************************//
         // Get One: StaffMember
         public async Task<ActionResult> Details(int id)
         {

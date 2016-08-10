@@ -34,5 +34,7 @@ namespace MobileGeneratorBooking.Models
         {
             return new ApplicationDbContext();
         }
+
+        
     }
 }

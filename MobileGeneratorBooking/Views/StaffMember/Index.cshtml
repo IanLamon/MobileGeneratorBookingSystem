@@ -1,15 +1,33 @@
 ﻿@model IEnumerable<MobileGeneratorBooking.Models.StaffMember>
+@using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity.EntityFramework
+@using MobileGeneratorBooking.Models
 
+@*User Role*@
 @{
-    ViewBag.Title = "Index";
+    var role = string.Empty;
+    if (User.Identity.IsAuthenticated)
+    {
+        var userStore = new UserStore<ApplicationUser>(new ApplicationDbContext());
+        var manager = new UserManager<ApplicationUser>(userStore);
+        var currentUser = manager.FindById(User.Identity.GetUserId());
+        role = currentUser.Role;
+    }
 }
 
-<h2>Index</h2>
+@{
+    ViewBag.Title = "Staff Members";
+}
+
+<h2>Staff Members</h2>
 
 <br />
-<p>
-    @Html.ActionLink("Create A New Staff Member >>", "Create", null, new { @class = "btn btn-success" })
-</p>
+@if (role == "SuperAdmin")
+{
+    <p>
+        @Html.ActionLink("Create A New Staff Member >>", "Create", null, new { @class = "btn btn-success" })
+    </p>
+}
 <table class="table">
     <tr>
         <th>
@@ -54,10 +72,17 @@
             @Html.DisplayFor(modelItem => item.Traffic)
         </td>
         <td>
-            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Details", "Details", new { id = item.Id })
+            @if (role == "SuperAdmin" || role == "Admin")
+            {
+                <span>| </span> @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+            }
+            @if (role == "SuperAdmin")
+            {
+                <span>| </span> @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            }
         </td>
+
     </tr>
 }
 

@@ -1,4 +1,19 @@
 ﻿@model MobileGeneratorBooking.Models.SubStation
+@using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity.EntityFramework
+@using MobileGeneratorBooking.Models
+
+@*User Role*@
+@{
+    var role = string.Empty;
+    if (User.Identity.IsAuthenticated)
+    {
+        var userStore = new UserStore<ApplicationUser>(new ApplicationDbContext());
+        var manager = new UserManager<ApplicationUser>(userStore);
+        var currentUser = manager.FindById(User.Identity.GetUserId());
+        role = currentUser.Role;
+    }
+}
 
 @{
     ViewBag.Title = "Details";
@@ -109,6 +124,9 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @if (role == "SuperAdmin" || role == "Admin")
+    {
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) <span>| </span>
+    }
     @Html.ActionLink("Back to List", "Index")
 </p>

@@ -64,9 +64,12 @@
                         <ul class="dropdown-menu">
                             <li><a href="~/Generator/Index">Generators</a></li>
                             <li><a href="~/Substation/Index">Substations</a></li>
-                            <li><a href="~/StaffMember/Index">Operators</a></li>
-                            <li><a href="~/StaffMember/Index">Traffic Managers</a></li>
-                            <li><a href="~/StaffMember/Index">Approvers</a></li>
+                             @if (role == "SuperAdmin")
+                            {
+                                <li><a href="~/StaffMember/Index">All Staff</a></li>
+                             }
+                            <li><a href="~/StaffMember/Operators">Operators</a></li>
+                            <li><a href="~/StaffMember/TrafficManagers">Traffic Managers</a></li>
                             @if (role == "SuperAdmin")
                             {
                                 <li><a href="~/Costs/Index">Costs</a></li>

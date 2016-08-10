@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MobileGeneratorBooking.Models.Booking>
+﻿@model IEnumerable<MobileGeneratorBooking.Models.StaffMember>
 @using Microsoft.AspNet.Identity
 @using Microsoft.AspNet.Identity.EntityFramework
 @using MobileGeneratorBooking.Models
@@ -16,36 +16,37 @@
 }
 
 @{
-    ViewBag.Title = "Previous Generator Bookings";
+    ViewBag.Title = "Traffic Managers";
 }
 
-<h2>@ViewBag.Title</h2>
+<h2>Traffic Managers</h2>
 
 <br />
-<div class="row">
-    <div class="col-md-12 text-right">@Html.ActionLink("View Future Bookings", "Index", null, new { @class = "btn btn-primary" })</div>
-</div>
-<br />
-
+@if (role == "SuperAdmin")
+{
+    <p>
+        @Html.ActionLink("Create A New Traffic Manager >>", "Create", null, new { @class = "btn btn-success" })
+    </p>
+}
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.StartTime)
+            @Html.DisplayNameFor(model => model.FirstName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SubstationId)
+            @Html.DisplayNameFor(model => model.Surname)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.GeneratorId)
+            @Html.DisplayNameFor(model => model.Email)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.BookingType)
+            @Html.DisplayNameFor(model => model.Telephone)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.BookingStatus)
+            @Html.DisplayNameFor(model => model.Operator)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ApproverId)
+            @Html.DisplayNameFor(model => model.Traffic)
         </th>
         <th></th>
     </tr>
@@ -54,25 +55,25 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.StartTime)
+                @Html.DisplayFor(modelItem => item.FirstName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.SubstationId)
+                @Html.DisplayFor(modelItem => item.Surname)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.GeneratorId)
+                @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.BookingType)
+                @Html.DisplayFor(modelItem => item.Telephone)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.BookingStatus)
+                @Html.DisplayFor(modelItem => item.Operator)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ApproverId)
+                @Html.DisplayFor(modelItem => item.Traffic)
             </td>
             <td>
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) 
+                @Html.ActionLink("Details", "Details", new { id = item.Id })
                 @if (role == "SuperAdmin" || role == "Admin")
                 {
                     <span>| </span> @Html.ActionLink("Edit", "Edit", new { id = item.Id })
@@ -82,6 +83,7 @@
                     <span>| </span> @Html.ActionLink("Delete", "Delete", new { id = item.Id })
                 }
             </td>
+
         </tr>
     }
 

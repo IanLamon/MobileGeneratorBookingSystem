@@ -316,6 +316,8 @@
     <Content Include="Views\Generator1\Edit.cshtml" />
     <Content Include="Views\Booking\Calendar.cshtml" />
     <Content Include="Views\Booking\PastBookings.cshtml" />
+    <Content Include="Views\StaffMember\Operators.cshtml" />
+    <Content Include="Views\StaffMember\TrafficManagers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
