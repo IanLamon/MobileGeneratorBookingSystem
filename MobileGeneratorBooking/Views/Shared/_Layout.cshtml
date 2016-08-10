@@ -52,11 +52,27 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Bookings", "Index", "Booking")</li>
-                    <li>@Html.ActionLink("Generators", "Index", "Generator")</li>
-                    <li>@Html.ActionLink("Staff", "Index", "StaffMember")</li>
-                    <li>@Html.ActionLink("Substations", "Index", "Substation")</li>
-                    <li>@Html.ActionLink("Costs", "Index", "Costs")</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bookings <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="~/Booking/Index">Bookings</a></li>
+                            <li><a href="~/Booking/PastBookings">Past Bookings</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Resources <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="~/Generator/Index">Generators</a></li>
+                            <li><a href="~/Substation/Index">Substations</a></li>
+                            <li><a href="~/StaffMember/Index">Operators</a></li>
+                            <li><a href="~/StaffMember/Index">Traffic Managers</a></li>
+                            <li><a href="~/StaffMember/Index">Approvers</a></li>
+                            @if (role == "SuperAdmin")
+                            {
+                                <li><a href="~/Costs/Index">Costs</a></li>
+                            }
+                        </ul>
+                    </li>
                     @if (role == "SuperAdmin")
                     {
                         <li>@Html.ActionLink("Add New User", "Register", "Account")</li>

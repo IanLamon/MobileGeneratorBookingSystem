@@ -67,6 +67,11 @@ textarea {
     background-color: #0076b7;
 }
 
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+    color: #ffffff;
+    background-color: #0076b7;
+}
+
 .navbar-header {
     margin-right: 50px !important;
 }

@@ -87,32 +87,32 @@ namespace MobileGeneratorBooking.Controllers
 
         //*********************************************************************//
         // GET Calendar Data: Booking
-        public async Task<ActionResult> Calendar(int inMonth = 0, int inYear = 0)
-        {
-            DateTime now = DateTime.Now;
+        //public async Task<ActionResult> Calendar(int inMonth = 0, int inYear = 0)
+        //{
+        //    DateTime now = DateTime.Now;
 
-            HttpResponseMessage responseMessage = await client.GetAsync(url);
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                var responseData = responseMessage.Content.ReadAsStringAsync().Result;
+        //    HttpResponseMessage responseMessage = await client.GetAsync(url);
+        //    if (responseMessage.IsSuccessStatusCode)
+        //    {
+        //        var responseData = responseMessage.Content.ReadAsStringAsync().Result;
 
-                var Bookings = JsonConvert.DeserializeObject<List<Booking>>(responseData);
-                var year = now.Year;
-                var month = now.Month + inMonth;
-                var curMonthData = new List<Booking>();
+        //        var Bookings = JsonConvert.DeserializeObject<List<Booking>>(responseData);
+        //        var year = now.Year;
+        //        var month = now.Month + inMonth;
+        //        var curMonthData = new List<Booking>();
 
-                foreach (var b in Bookings)
-                {
-                    if (b.StartTime.Year == year && b.StartTime.Month == month)
-                    {
-                        curMonthData.Add(b);
-                    }
-                }
+        //        foreach (var b in Bookings)
+        //        {
+        //            if (b.StartTime.Year == year && b.StartTime.Month == month)
+        //            {
+        //                curMonthData.Add(b);
+        //            }
+        //        }
 
-                return View(curMonthData);
-            }
-            return View("Error");
-        }
+        //        return View(curMonthData);
+        //    }
+        //    return View("Error");
+        //}
 
         //*********************************************************************//
         // Get One: Booking
